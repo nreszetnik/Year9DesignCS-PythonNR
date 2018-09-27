@@ -12,11 +12,11 @@ def submit():
 
 	output.config(state="normal")
 
-	outputValue = "Given\nradius:"+str(r)+"units\nheight:"+str(h)+"units\nThe volume is:"str(v)+"units\n\n"
+	outputValue = "Given\nradius:"+str(r)+"units\nheight:"+str(h)+"units\nThe volume is:"+str(v)+"units\n\n"
 
-
+	output.delete(1.0,tk.END)
 	output.insert(tk.INSERT,outputValue)
-	output.confi(state="disable")
+	output.config(state="disable")
 
 root = tk.Tk()
 root.configure(background = 'red')
