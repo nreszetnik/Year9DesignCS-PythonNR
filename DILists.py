@@ -5,4 +5,5 @@ food3 = input("Input food 3: ")
 
 foods = [food1, food2, food3]
 
+foods.sort()
 print(foods)
