@@ -30,10 +30,12 @@ def changeHighContrast(*args):
 
 root = tk.Tk()
 
-titleLabel = tk.Label(root, text = "Commodity Program", font = ("Helvetica", 20))
+root.config( bg = "grey")
+
+titleLabel = tk.Label(root, text = "Commodity Program", font = ("Helvetica", 20), bg = "grey")
 titleLabel.grid(row = 0, column = 0, columnspan = 2, sticky = "NESW")
 
-word1Label = tk.Label(root, text = "Metal Type", font = ("Helvetica"))
+word1Label = tk.Label(root, text = "Metal Type", font = ("Helvetica"),bg = "grey")
 word1Label.grid(row = 1, column = 0, columnspan = 2, sticky = "NESW" )
 
 MetalOPTIONS = [
@@ -51,7 +53,7 @@ metalType.trace("w",change)
 dropDownMenu = tk.OptionMenu(root,metalType, MetalOPTIONS[0],MetalOPTIONS[1],MetalOPTIONS[2])
 dropDownMenu.grid(row = 2, column = 0, rowspan = 2, columnspan = 2, sticky = "NESW")
 
-cbHighContrast = tk.Checkbutton(root,text = "High Contrast")
+cbHighContrast = tk.Checkbutton(root,text = "High Contrast", bg = "grey")
 cbHighContrast.grid(row = 2, column = 2, sticky = "NESW")
 
 var1 = tk.IntVar()
@@ -62,10 +64,10 @@ check1.config(font=("Courier", 16))
 check1.grid()
 var1.trace("w",changeHighContrast)
  
-cbFontsize= tk.Checkbutton(root,text = "Font Size")
+cbFontsize= tk.Checkbutton(root,text = "Font Size", bg = "grey")
 cbFontsize.grid(row = 3, column = 2, sticky = "NESW")
 
-word1Label = tk.Label(root, text = "Measurement Type",font = ("Helvetica"))
+word1Label = tk.Label(root, text = "Measurement Type",font = ("Helvetica"), bg = "grey")
 word1Label.grid(row = 4, column = 0, columnspan = 2, sticky = "NESW")
 
 MeasurementOPTIONS = [
@@ -83,7 +85,7 @@ dropDownMenu2 = tk.OptionMenu(root,measurementType, MeasurementOPTIONS[0],Measur
 dropDownMenu2.grid(row = 5, column = 0, columnspan = 2, sticky = "NESW")
 
 
-word1Label = tk.Label(root, text = "Amount of Money You Have To Spend", font = ("Helvetica"))
+word1Label = tk.Label(root, text = "Amount of Money You Have To Spend", font = ("Helvetica"), bg = "grey")
 word1Label.grid(row = 6, column = 0, columnspan = 2, sticky = "NESW")
 
 root.title("GUI Entry")
@@ -95,8 +97,9 @@ entry1.bind("<FocusOut>", on_focusout1)
 entry1.config(fg = "grey")
 
 
+
 root.title("Commodity GUI Program")
 btn1 = tk.Button(root, text = "Submit")
-btn1.grid(row = 8, column = 0, columnspan = 2, sticky = "NESW")
+btn1.grid(row = , column = 0, columnspan = 2, sticky = "NESW")
 
 root.mainloop()
