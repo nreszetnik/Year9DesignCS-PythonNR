@@ -1,6 +1,57 @@
 
 import tkinter as tk
 
+def submit(*args):
+	print("Submit")
+	listMetal.append(metalType.get())
+	listMeasure.append(measurementType.get())
+	listMoney.append(entry1.get())
+	#listPurchase.append(
+	#Write the math to find how much you can purchase then
+	#append it to the lsitPurchase
+
+
+	money = entry1.get()
+	priceOunce = 0
+	priceGram = 0
+	priceKilo = 0
+	answer = 0
+
+	if metalType.get() == "Gold":
+		priceOunce = 1248.30
+		priceGram = 40.13
+		priceKilo = 40133.75
+
+	if metalType.get() == "Silver":
+		priceOunce = 14.10
+		priceGram = 0.45
+		priceKilo = 453.33
+
+	if metalType.get() == "Platnium":
+		priceOunce = 834.90
+		priceGram = 29.45
+		priceKilo = 29450.08
+
+
+	if measurementType.get() == "Grams":
+		answer = float(money)/priceGram
+	if measurementType.get() == "Kilograms":
+		answer = float(money)/priceKilo
+	if measurementType.get() == "Ounces":
+		answer = float(money)/priceOunce
+
+	print(answer)
+	listPurchase.append(answer)
+	print(listPurchase)
+	#check your units
+
+
+	#answer = money/
+
+	print (listMetal)
+	print (listMeasure)
+	print (listMoney)
+
 def on_entry_click(event):
    print(event.widget)
    event.widget.delete(0, "end") # delete all the text in the entry
@@ -37,13 +88,22 @@ def changeHighContrast(*args):
 			cbHighContrast.config(bg = "white",fg = "black")
 	else:
 		print("do something else")
+
+listMetal = []
+listMeasure = []
+listMoney = []
+listPurchase = []
+
+
+
+
+
 root = tk.Tk()
 
 root.config( bg = "grey")
 
-titleLabel = tk.Label(root, text = "Commodity Program", font = ("Helvetica", 20), bg = "grey")
+titleLabel = tk.Label(root, text = "Commodity Program", font = ("Calibri", 20), bg = "grey")
 titleLabel.grid(row = 0, column = 0, columnspan = 2, sticky = "NESW")
-
 word1Label = tk.Label(root, text = "Metal Type", font = ("Helvetica"),bg = "grey")
 word1Label.grid(row = 1, column = 0, columnspan = 2,sticky = "NESW", padx = 5, pady = 5)
 
@@ -96,7 +156,7 @@ dropDownMenu2 = tk.OptionMenu(root,measurementType, MeasurementOPTIONS[0],Measur
 dropDownMenu2.grid(row = 5, column = 0, columnspan = 2, sticky = "NESW", padx = 5, pady = 5)
 
 
-word1Label = tk.Label(root, text = "Amount of Money You Have To Spend", font = ("Helvetica"), bg = "grey")
+word1Label = tk.Label(root, text = "Amount of Money You Have To Spend", font = ("Helvetica"), bg = "grey", fg = "white")
 word1Label.grid(row = 6, column = 0, columnspan = 2, sticky = "NESW", padx = 5, pady = 5)
 
 root.title("GUI Entry")
@@ -107,10 +167,13 @@ entry1.bind("<FocusIn>", on_entry_click)
 entry1.bind("<FocusOut>", on_focusout1)
 entry1.config(fg = "grey")
 
-
-
 root.title("Commodity GUI Program")
-btn1 = tk.Button(root, text = "Submit")
+btn1 = tk.Button(root, text = "Submit", command = submit)
 btn1.grid(row = 8, column = 0, columnspan = 2, sticky = "NESW",padx = 20, pady = 20)
+
+
+textbox = tk.Text(root, width = 20, height = 10)
+textbox.grid(row  = 9, column = 0, columnspan = 2, sticky = "NESW", padx = 20, pady = 20)
+
 
 root.mainloop()
