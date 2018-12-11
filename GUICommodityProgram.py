@@ -102,7 +102,7 @@ root = tk.Tk()
 
 root.config( bg = "grey")
 
-titleLabel = tk.Label(root, text = "Commodity Program", font = ("Calibri", 20), bg = "grey")
+titleLabel = tk.Label(root, text = "Commodity Program", font = ("Calibri", 20), bg = "grey", fg = "white")
 titleLabel.grid(row = 0, column = 0, columnspan = 2, sticky = "NESW")
 word1Label = tk.Label(root, text = "Metal Type", font = ("Helvetica"),bg = "grey")
 word1Label.grid(row = 1, column = 0, columnspan = 2,sticky = "NESW", padx = 5, pady = 5)
@@ -130,15 +130,15 @@ contrast.trace("w",changeHighContrast)
 #check1 = tk.Checkbutton(root, text="High Contrast On/Off", variable=var1)
 #check1.config(font=("Courier", 16))
 #check1.grid()
-cbHighContrast = tk.Checkbutton(root,text = "High Contrast", bg = "grey",variable = contrast)
+cbHighContrast = tk.Checkbutton(root,text = "High Contrast", bg = "grey",variable = contrast, fg = "white")
 cbHighContrast.grid(row = 2, column = 2, sticky = "NESW")
 
 
  
-cbFontsize= tk.Checkbutton(root,text = "Font Size", bg = "grey")
+cbFontsize= tk.Checkbutton(root,text = "Font Size", bg = "grey", fg = "white")
 cbFontsize.grid(row = 3, column = 2, sticky = "NESW")
 
-word1Label = tk.Label(root, text = "Measurement Type",font = ("Helvetica"), bg = "grey")
+word1Label = tk.Label(root, text = "Measurement Type",font = ("Helvetica"), bg = "grey", fg = "white")
 word1Label.grid(row = 4, column = 0, columnspan = 2, sticky = "NESW", padx = 5, pady = 5)
 
 MeasurementOPTIONS = [
