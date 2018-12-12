@@ -2,55 +2,57 @@
 import tkinter as tk
 
 def submit(*args):
-	print("Submit")
-	listMetal.append(metalType.get())
-	listMeasure.append(measurementType.get())
-	listMoney.append(entry1.get())
-	#listPurchase.append(
-	#Write the math to find how much you can purchase then
-	#append it to the lsitPurchase
+	try:
+
+		entry1.config(background = "white")
+		print("Submit")
+		listMetal.append(metalType.get())
+		listMeasure.append(measurementType.get())
+		listMoney.append(entry1.get())
+
+		money = entry1.get()
+		priceOunce = 0
+		priceGram = 0
+		priceKilo = 0
+		answer = 0
+
+		if metalType.get() == "Gold":
+			priceOunce = 1248.30
+			priceGram = 40.13
+			priceKilo = 40133.75
+
+		if metalType.get() == "Silver":
+			priceOunce = 14.10
+			priceGram = 0.45
+			priceKilo = 453.33
+
+		if metalType.get() == "Platnium":
+			priceOunce = 834.90
+			priceGram = 29.45
+			priceKilo = 29450.08
 
 
-	money = entry1.get()
-	priceOunce = 0
-	priceGram = 0
-	priceKilo = 0
-	answer = 0
+		if measurementType.get() == "Grams":
+			answer = float(money)/priceGram
+		if measurementType.get() == "Kilograms":
+			answer = float(money)/priceKilo
+		if measurementType.get() == "Ounces":
+			answer = float(money)/priceOunce
 
-	if metalType.get() == "Gold":
-		priceOunce = 1248.30
-		priceGram = 40.13
-		priceKilo = 40133.75
+		answer = round(answer,3)
+		print(answer)
+		textbox.insert(tk.END, "You can buy " + str(answer) + " " + str(measurementType.get() + " " + "of" + " " + str( metalType.get())))
+		listPurchase.append(answer)
+		print(listPurchase)
 
-	if metalType.get() == "Silver":
-		priceOunce = 14.10
-		priceGram = 0.45
-		priceKilo = 453.33
-
-	if metalType.get() == "Platnium":
-		priceOunce = 834.90
-		priceGram = 29.45
-		priceKilo = 29450.08
-
-
-	if measurementType.get() == "Grams":
-		answer = float(money)/priceGram
-	if measurementType.get() == "Kilograms":
-		answer = float(money)/priceKilo
-	if measurementType.get() == "Ounces":
-		answer = float(money)/priceOunce
-
-	print(answer)
-	listPurchase.append(answer)
-	print(listPurchase)
-	#check your units
-
-
-	#answer = money/
-
-	print (listMetal)
-	print (listMeasure)
-	print (listMoney)
+		print (listMetal)
+		print (listMeasure)
+		print (listMoney)
+	
+	except:
+		print("Please Input an Integer")
+		entry1.config(background = "red")
+		entry1.delete(0,tk.END)
 
 def on_entry_click(event):
    print(event.widget)
@@ -59,7 +61,7 @@ def on_entry_click(event):
    event.widget.config(fg = "black") #The inserted text becomes black
 
 def on_focusout1(event):
-	print("%%%%%%%%%%%%%%%%%%%%%%%")
+	print("%%%%%%%%%%%%%%%%%%%%%%")
 	if event.widget.get() == "":
 		event.widget.insert(0, "i.e $30,000")
 		
@@ -79,24 +81,41 @@ def changeHighContrast(*args):
 	print("Change Contrast")
 	print(contrast.get())
 
-	if contrast.get() == 0:
-		if var1.get() == 1:
-			root.config(bg = "black")
-			cbHighContrast.config(bg = "black", fg = "yellow")
-		if var1.get() == 0:
-			root.config(bg = "white")
-			cbHighContrast.config(bg = "white",fg = "black")
-	else:
-		print("do something else")
+	if contrast.get() == 1:
+		root.config(background = "black")
 
+		for i in range(0,len(widgets),1):
+			widgets[i].config(background = "black")
+		
+	else:
+		root.config(background = "grey")
+
+		for i in range(0,len(widgets),1):
+			widgets[i].config(background = "grey")
+
+def changeFontsize(*args):
+	print("Change Font Size")
+	print(Fontsize.get())
+
+	if Fontsize.get() == 1:
+		root.config(font = 20)
+
+		for i in range(0,len(widgets,1)
+			widgets1[i].config(font = 20)
+
+	else:
+		root.config(font = 13)
+
+		for i in range(0,len(widgets,1):
+			widgets1[i].config(font = 13)
+	
 listMetal = []
 listMeasure = []
 listMoney = []
 listPurchase = []
 
-
-
-
+widgets = []
+widgets1 = []
 
 root = tk.Tk()
 
@@ -104,8 +123,12 @@ root.config( bg = "grey")
 
 titleLabel = tk.Label(root, text = "Commodity Program", font = ("Calibri", 20), bg = "grey", fg = "white")
 titleLabel.grid(row = 0, column = 0, columnspan = 2, sticky = "NESW")
-word1Label = tk.Label(root, text = "Metal Type", font = ("Helvetica"),bg = "grey")
+widgets.append(titleLabel)
+
+word1Label = tk.Label(root, text = "Metal Type", font = ("Helvetica"),bg = "grey", fg = "white")
 word1Label.grid(row = 1, column = 0, columnspan = 2,sticky = "NESW", padx = 5, pady = 5)
+widgets.append(word1Label)
+
 
 MetalOPTIONS = [
 
@@ -132,14 +155,19 @@ contrast.trace("w",changeHighContrast)
 #check1.grid()
 cbHighContrast = tk.Checkbutton(root,text = "High Contrast", bg = "grey",variable = contrast, fg = "white")
 cbHighContrast.grid(row = 2, column = 2, sticky = "NESW")
+widgets.append(cbHighContrast)
 
+var2 = tk.IntVar()
+fontsize = tk.IntVar()
+fontsize.trace("w", changeFontsize)
 
- 
 cbFontsize= tk.Checkbutton(root,text = "Font Size", bg = "grey", fg = "white")
 cbFontsize.grid(row = 3, column = 2, sticky = "NESW")
+widgets.append(cbFontsize)
 
 word1Label = tk.Label(root, text = "Measurement Type",font = ("Helvetica"), bg = "grey", fg = "white")
 word1Label.grid(row = 4, column = 0, columnspan = 2, sticky = "NESW", padx = 5, pady = 5)
+widgets.append(word1Label)
 
 MeasurementOPTIONS = [
 
@@ -158,6 +186,7 @@ dropDownMenu2.grid(row = 5, column = 0, columnspan = 2, sticky = "NESW", padx = 
 
 word1Label = tk.Label(root, text = "Amount of Money You Have To Spend", font = ("Helvetica"), bg = "grey", fg = "white")
 word1Label.grid(row = 6, column = 0, columnspan = 2, sticky = "NESW", padx = 5, pady = 5)
+widgets.append(word1Label)
 
 root.title("GUI Entry")
 entry1 = tk.Entry(root)
