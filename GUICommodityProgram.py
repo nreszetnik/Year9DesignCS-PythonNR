@@ -97,25 +97,25 @@ def changeFontsize(*args):
 	print("Change Font Size")
 	print(Fontsize.get())
 
+
 	if Fontsize.get() == 1:
 		root.config(font = 20)
 
 		for i in range(0,len(widgets,1)
-			widgets1[i].config(font = 20)
+			widgets[i].config(font = 20)
 
 	else:
 		root.config(font = 13)
 
-		for i in range(0,len(widgets,1):
-			widgets1[i].config(font = 13)
-	
+		for i in range(0,len(widgets1,1):
+			widgets[i].config(font = 13)
+
 listMetal = []
 listMeasure = []
 listMoney = []
 listPurchase = []
 
 widgets = []
-widgets1 = []
 
 root = tk.Tk()
 
@@ -163,10 +163,11 @@ fontsize.trace("w", changeFontsize)
 
 cbFontsize= tk.Checkbutton(root,text = "Font Size", bg = "grey", fg = "white")
 cbFontsize.grid(row = 3, column = 2, sticky = "NESW")
-widgets.append(cbFontsize)
+widgets1.append(cbFontsize)
 
 word1Label = tk.Label(root, text = "Measurement Type",font = ("Helvetica"), bg = "grey", fg = "white")
 word1Label.grid(row = 4, column = 0, columnspan = 2, sticky = "NESW", padx = 5, pady = 5)
+widgets.append(word1Label)
 widgets.append(word1Label)
 
 MeasurementOPTIONS = [
