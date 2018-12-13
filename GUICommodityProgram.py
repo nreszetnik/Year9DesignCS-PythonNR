@@ -79,7 +79,7 @@ def change(*args):
 		dropDownMenu.config(background  = "#e5e4e2")
 
 def changeFontSize(*args):
-	print("Yoooooooo")
+	print("running change")
 	variable = fontSize.get()
 	print(variable)
 	if variable == 1:
@@ -109,23 +109,6 @@ def changeHighContrast(*args):
 
 		for i in range(0,len(widgets),1):
 			widgets[i].config(background = "grey")
-
-#def changeFontsize(*args):
-	#print("Change Font Size")
-	#print(Fontsize.get())
-
-
-	#if Fontsize.get() == 1:
-		#root.config(font = 20)
-
-		#for i in range(0,len(widgets,1)
-			#widgets[i].config(font = 20)
-
-	#else:
-		#root.config(font = 13)
-
-		#for i in range(0,len(widgets1,1):
-			#widgets[i].config(font = 13)
 
 listMetal = []
 listMeasure = []
@@ -167,16 +150,11 @@ dropDownMenu.grid(row = 2, column = 0, rowspan = 2, columnspan = 2, sticky = "NE
 var1 = tk.IntVar()
 contrast = tk.IntVar()
 contrast.trace("w",changeHighContrast)
-#check1 = tk.Checkbutton(root, text="High Contrast On/Off", variable=var1)
-#check1.config(font=("Courier", 16))
-#check1.grid()
+
 cbHighContrast = tk.Checkbutton(root,text = "High Contrast", bg = "grey",variable = contrast, fg = "white")
 cbHighContrast.grid(row = 2, column = 2, sticky = "NESW")
 widgets.append(cbHighContrast)
 
-#var2 = tk.IntVar()
-#fontsize = tk.IntVar()
-#fontsize.trace("w", changeFontsize)
 fontSize = tk.IntVar()
 fontSize.trace('w', changeFontSize)
 
