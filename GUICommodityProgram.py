@@ -2,6 +2,7 @@
 import tkinter as tk
 
 def submit(*args):
+	textbox.delete('1.0', tk.END)
 	try:
 
 		entry1.config(background = "white")
@@ -77,6 +78,22 @@ def change(*args):
 	elif metalType.get() == "Platnium":
 		dropDownMenu.config(background  = "#e5e4e2")
 
+def changeFontSize(*args):
+	print("Yoooooooo")
+	variable = fontSize.get()
+	print(variable)
+	if variable == 1:
+		word1Label.config(font=("Calibri", 20))
+		measurmentLabel.config(font=("Calibri", 20))
+		titleLabel.config(font=("Calibri", 30))
+		metalTypeLabel.config(font=("Calibri", 20))
+	else:
+		word1Label.config(font=("Calibri", 13))
+		measurmentLabel.config(font=("Calibri", 13))
+		titleLabel.config(font=("Calibri", 20))
+		metalTypeLabel.config(font=("Calibri", 13))
+
+
 def changeHighContrast(*args):
 	print("Change Contrast")
 	print(contrast.get())
@@ -93,22 +110,22 @@ def changeHighContrast(*args):
 		for i in range(0,len(widgets),1):
 			widgets[i].config(background = "grey")
 
-def changeFontsize(*args):
-	print("Change Font Size")
-	print(Fontsize.get())
+#def changeFontsize(*args):
+	#print("Change Font Size")
+	#print(Fontsize.get())
 
 
-	if Fontsize.get() == 1:
-		root.config(font = 20)
+	#if Fontsize.get() == 1:
+		#root.config(font = 20)
 
-		for i in range(0,len(widgets,1)
-			widgets[i].config(font = 20)
+		#for i in range(0,len(widgets,1)
+			#widgets[i].config(font = 20)
 
-	else:
-		root.config(font = 13)
+	#else:
+		#root.config(font = 13)
 
-		for i in range(0,len(widgets1,1):
-			widgets[i].config(font = 13)
+		#for i in range(0,len(widgets1,1):
+			#widgets[i].config(font = 13)
 
 listMetal = []
 listMeasure = []
@@ -125,9 +142,9 @@ titleLabel = tk.Label(root, text = "Commodity Program", font = ("Calibri", 20), 
 titleLabel.grid(row = 0, column = 0, columnspan = 2, sticky = "NESW")
 widgets.append(titleLabel)
 
-word1Label = tk.Label(root, text = "Metal Type", font = ("Helvetica"),bg = "grey", fg = "white")
-word1Label.grid(row = 1, column = 0, columnspan = 2,sticky = "NESW", padx = 5, pady = 5)
-widgets.append(word1Label)
+metalTypeLabel = tk.Label(root, text = "Metal Type", font = ("Helvetica"),bg = "grey", fg = "white")
+metalTypeLabel.grid(row = 1, column = 0, columnspan = 2,sticky = "NESW", padx = 5, pady = 5)
+widgets.append(metalTypeLabel)
 
 
 MetalOPTIONS = [
@@ -157,18 +174,20 @@ cbHighContrast = tk.Checkbutton(root,text = "High Contrast", bg = "grey",variabl
 cbHighContrast.grid(row = 2, column = 2, sticky = "NESW")
 widgets.append(cbHighContrast)
 
-var2 = tk.IntVar()
-fontsize = tk.IntVar()
-fontsize.trace("w", changeFontsize)
+#var2 = tk.IntVar()
+#fontsize = tk.IntVar()
+#fontsize.trace("w", changeFontsize)
+fontSize = tk.IntVar()
+fontSize.trace('w', changeFontSize)
 
-cbFontsize= tk.Checkbutton(root,text = "Font Size", bg = "grey", fg = "white")
+cbFontsize= tk.Checkbutton(root,text = "Font Size", bg = "grey", variable = fontSize, fg = "white")
 cbFontsize.grid(row = 3, column = 2, sticky = "NESW")
-widgets1.append(cbFontsize)
+widgets.append(cbFontsize)
 
-word1Label = tk.Label(root, text = "Measurement Type",font = ("Helvetica"), bg = "grey", fg = "white")
-word1Label.grid(row = 4, column = 0, columnspan = 2, sticky = "NESW", padx = 5, pady = 5)
-widgets.append(word1Label)
-widgets.append(word1Label)
+measurmentLabel = tk.Label(root, text = "Measurement Type",font = ("Helvetica"), bg = "grey", fg = "white")
+measurmentLabel.grid(row = 4, column = 0, columnspan = 2, sticky = "NESW", padx = 5, pady = 5)
+widgets.append(measurmentLabel)
+widgets.append(measurmentLabel)
 
 MeasurementOPTIONS = [
 
